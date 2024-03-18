@@ -2,5 +2,8 @@ POST http://localhost:5000/heros
 Content-Type: application/json
 
 {
-  
+  "nickname" : "superman",
+  "realName" : "Yon Doe",
+  "originDescription" : "lorem ipsom",
+  "catchPhrase" : "go go"
 }
