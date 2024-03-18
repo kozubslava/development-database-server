@@ -14,13 +14,32 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Hero.init({
-    nickname: DataTypes.STRING,
-    realName: DataTypes.STRING,
-    originDescription: DataTypes.TEXT,
-    catchPhrase: DataTypes.TEXT
+    nickname: {type: DataTypes.STRING(200),
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        notNull: true,
+      }
+    },
+    realName: {type: DataTypes.STRING,
+      field: 'real_name',
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        notNull: true,
+      }
+    },
+    originDescription: {type: DataTypes.TEXT,
+      field: 'origin_description',
+    },
+    catchPhrase: {type: DataTypes.TEXT,
+      field: 'catch_phrase',
+    }
   }, {
     sequelize,
     modelName: 'Hero',
+    underscored: true,
+      tableName: 'heros'
   });
   return Hero;
 };
