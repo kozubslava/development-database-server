@@ -1,1 +1,1 @@
-DELETE http://localhost:5000/heros/1
+DELETE http://localhost:5000/heros/4

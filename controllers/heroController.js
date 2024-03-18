@@ -1,4 +1,5 @@
 const { Hero } = require("../models");
+const hero = require("../models/hero");
 
 module.exports.createHero = async (req, res, next) => {
   try {
@@ -40,6 +41,11 @@ module.exports.updateHero = async (req, res, next) => {
 
 module.exports.deleteHero = async (req, res, next) => {
   try {
+    const {params: {heroId}} = req;
+    const hero = await Hero.findByPk(heroId);
+    await hero.destroy();
+
+    res.status(200).send({ data: hero });
   } catch (error) {
     next(error);
   }
