@@ -13,6 +13,11 @@ module.exports.createHero = async (req, res, next) => {
 
 module.exports.getHero = async (req, res, next) => {
   try {
+    const {
+      params: { heroId },
+    } = req;
+    const hero = await Hero.findByPk(heroId);
+    res.status(200).send({ data: hero });
   } catch (error) {
     next(error);
   }
@@ -20,6 +25,8 @@ module.exports.getHero = async (req, res, next) => {
 
 module.exports.getHeros = async (req, res, next) => {
   try {
+    const heros = await Hero.findAll();
+    res.status(200).send(heros);
   } catch (error) {
     next(error);
   }
@@ -27,7 +34,10 @@ module.exports.getHeros = async (req, res, next) => {
 
 module.exports.updateHero = async (req, res, next) => {
   try {
-    const { body, params: {heroId}} = req;
+    const {
+      body,
+      params: { heroId },
+    } = req;
     const hero = await Hero.findByPk(heroId);
     const updatedHero = await hero.update(body, {
       returning: true,
@@ -41,7 +51,9 @@ module.exports.updateHero = async (req, res, next) => {
 
 module.exports.deleteHero = async (req, res, next) => {
   try {
-    const {params: {heroId}} = req;
+    const {
+      params: { heroId },
+    } = req;
     const hero = await Hero.findByPk(heroId);
     await hero.destroy();
 
