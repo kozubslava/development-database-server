@@ -1,5 +1,5 @@
 const { Hero } = require("../models");
-const hero = require("../models/hero");
+
 
 module.exports.createHero = async (req, res, next) => {
   try {
@@ -13,11 +13,8 @@ module.exports.createHero = async (req, res, next) => {
 
 module.exports.getHero = async (req, res, next) => {
   try {
-    const {
-      params: { heroId },
-    } = req;
-    const hero = await Hero.findByPk(heroId);
-    res.status(200).send({ data: hero });
+    const { hero } = req;
+    res.status(200).send({data: hero});
   } catch (error) {
     next(error);
   }
@@ -34,11 +31,7 @@ module.exports.getHeros = async (req, res, next) => {
 
 module.exports.updateHero = async (req, res, next) => {
   try {
-    const {
-      body,
-      params: { heroId },
-    } = req;
-    const hero = await Hero.findByPk(heroId);
+    const { body, hero } = req;
     const updatedHero = await hero.update(body, {
       returning: true,
     });
@@ -51,10 +44,7 @@ module.exports.updateHero = async (req, res, next) => {
 
 module.exports.deleteHero = async (req, res, next) => {
   try {
-    const {
-      params: { heroId },
-    } = req;
-    const hero = await Hero.findByPk(heroId);
+    const { hero } = req;
     await hero.destroy();
 
     res.status(200).send({ data: hero });

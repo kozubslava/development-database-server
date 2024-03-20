@@ -1,6 +1,6 @@
-PUT http://localhost:5000/heros/1
+PUT http://localhost:5000/heros/2
 Content-Type: application/json
 
 {
-  "nickname" : "SuperMan"
+  "nickname" : "Superman"
 }
