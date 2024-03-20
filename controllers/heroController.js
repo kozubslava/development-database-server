@@ -1,6 +1,5 @@
 const { Hero } = require("../models");
 
-
 module.exports.createHero = async (req, res, next) => {
   try {
     const { body } = req;
@@ -14,7 +13,7 @@ module.exports.createHero = async (req, res, next) => {
 module.exports.getHero = async (req, res, next) => {
   try {
     const { hero } = req;
-    res.status(200).send({data: hero});
+    res.status(200).send({ data: hero });
   } catch (error) {
     next(error);
   }
