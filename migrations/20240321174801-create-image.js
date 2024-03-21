@@ -2,29 +2,21 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('heroes', {
+    await queryInterface.createTable('images', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nickname: {
-        type: Sequelize.STRING(200),
-        allowNull: false,
-      },
-      realName: {
+      imageName: {
         type: Sequelize.STRING,
-        field: 'real_name',
+        field: 'image_name',
         allowNull: false,
       },
-      originDescription: {
-        type: Sequelize.TEXT,
-        field: 'origin_description',
-      },
-      catchPhrase: {
-        type: Sequelize.TEXT,
-        field: 'catch_phrase',
+      path: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -34,11 +26,11 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        field:'updated_at'
+        field:'updated_at',
       }
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('heroes');
+    await queryInterface.dropTable('images');
   }
 };

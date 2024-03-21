@@ -2,6 +2,6 @@ const express = require('express');
 const heroRouter = require('./heroRouter')
 const router = express.Router();
 
-router.use('/heros', heroRouter);
+router.use('/heroes', heroRouter);
 
 module.exports = router;

@@ -14,6 +14,10 @@ module.exports = (sequelize, DataTypes) => {
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       });
+      Hero.belongsToMany(models.Image, {
+        through: "heroes_to_images",
+        foreignKey: "heroId",
+      });
     }
   }
   Hero.init(
@@ -42,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "Hero",
       underscored: true,
-      tableName: "heros",
+      tableName: "heroes",
     }
   );
   return Hero;
