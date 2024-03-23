@@ -1,4 +1,5 @@
 const { Hero } = require("../models");
+const {Image} = require ("../models")
 
 module.exports.createHero = async (req, res, next) => {
   try {
@@ -51,3 +52,21 @@ module.exports.deleteHero = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.addHeroToImage = async (req, res, next) => {
+  try {
+    const {hero, image} = req;
+
+    // await hero.addImage(image);
+    await image.addHero(hero);
+
+    res.status(201).send(hero)
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.getHeroWithImage = async(req, res, next) => {
+  const {hero} = req
+}
