@@ -10,13 +10,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       imageName: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING,
         field: 'image_name',
-        allowNull: false,
       },
       imagePath: {
-        type: Sequelize.TEXT,
-        allowNull: false,
+        type: Sequelize.STRING,
         field: 'image_path'
       },
       createdAt: {
