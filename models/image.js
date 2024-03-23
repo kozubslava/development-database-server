@@ -11,17 +11,30 @@ module.exports = (sequelize, DataTypes) => {
       Image.belongsToMany(models.Hero, {
         through: "heroes_to_images",
         foreignKey: "imageId",
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       });
     }
   }
   Image.init(
     {
-      imageName: DataTypes.STRING,
-      path: DataTypes.STRING,
+      imageName: {
+        type: DataTypes.TEXT,
+        field: "image_name",
+        allowNull: false,
+      },
+      imagePath: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        field: 'image_path'
+      },
     },
+
     {
       sequelize,
       modelName: "Image",
+      underscored: true,
+      tableName: "images"
     }
   );
   return Image;

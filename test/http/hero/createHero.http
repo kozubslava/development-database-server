@@ -2,7 +2,7 @@ POST http://localhost:5000/heroes
 Content-Type: application/json
 
 {
-  "nickname" : "batman",
+  "nickname" : "BBatman",
   "realName" : "Doe",
   "originDescription" : "lorem ",
   "catchPhrase" : "go go"

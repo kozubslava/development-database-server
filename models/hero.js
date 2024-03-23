@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
       Hero.belongsToMany(models.Image, {
         through: "heroes_to_images",
         foreignKey: "heroId",
+        onDelete: 'CASCADE',
+        onUpdate:'CASCADE',
       });
     }
   }
@@ -39,8 +41,13 @@ module.exports = (sequelize, DataTypes) => {
           notNull: true,
         },
       },
-      originDescription: { type: DataTypes.TEXT, field: "origin_description" },
-      catchPhrase: { type: DataTypes.TEXT, field: "catch_phrase" },
+      originDescription: { 
+        type: DataTypes.TEXT, 
+        field: "origin_description" 
+      },
+      catchPhrase: { 
+        type: DataTypes.TEXT, 
+        field: "catch_phrase" },
     },
     {
       sequelize,
