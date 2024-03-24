@@ -10,7 +10,8 @@ heroRouter.get("/", HeroContronner.getHeros);
 heroRouter.get("/:heroId", findHero, HeroContronner.getHero);
 heroRouter.put("/:heroId", findHero, HeroContronner.updateHero);
 heroRouter.delete("/:heroId", findHero, HeroContronner.deleteHero);
-heroRouter.post("/:heroID/images/:imageId", findHero,findImage,HeroContronner.addHeroToImage);
+heroRouter.post("/:heroId/images/:imageId", findHero,findImage,HeroContronner.addHeroToImage);
+heroRouter.get("/:heroId/images", findHero,HeroContronner.getHeroWithImage);
 
 heroRouter.use("/:heroId/superpowers", findHero, superpowerRouter);
 
